@@ -1,0 +1,15 @@
+services:
+  aimda-app:
+    image: aimda-app
+    build: .
+    container_name: aimda-app
+    ports:
+      - "8030:8030"
+    env_file: docker.env
+    restart: unless-stopped
+    networks:
+      - omnikron-docker-net
+
+networks:
+  omnikron-docker-net:
+    external: true
