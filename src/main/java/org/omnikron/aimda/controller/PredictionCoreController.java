@@ -35,16 +35,10 @@ public class PredictionCoreController {
     }
 
     @PostMapping("/predict")
-    public ResponseEntity<?> predict(@RequestParam("image") MultipartFile image) {
-        try
-        {
-            PredictionResult result = predictionCoreService.Predict(image);
-            return ResponseEntity.ok(result);
-        }
-        catch(IOException e)
-        {
-            return ResponseEntity.badRequest().body("Failed to read the uploaded image: " + e.getMessage());
-        }
+    public ResponseEntity<?> predict(@RequestParam("image") MultipartFile image)  throws IOException 
+    {
+        PredictionResult result = predictionCoreService.Predict(image);
+        return ResponseEntity.ok(result);
     }
     
     
